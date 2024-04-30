@@ -1,0 +1,18 @@
+name: Test Fork
+run-name: ${{ github.event_name }} by ${{ github.actor }}
+on: 
+  push:
+  pull_request:
+
+jobs:
+  Test_Fork:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/zephyrproject-rtos/ci:v0.26.11
+      options: '--entrypoint /bin/bash'
+
+    steps:
+      - name: set_env
+        run: |
+          echo "I am running"
